@@ -1,12 +1,21 @@
 import React from 'react';
-import {SafeAreaView, StatusBar} from 'react-native';
+import styled from 'styled-components';
+
+import AuthorRow from './components/AuthorRow';
+
+const Container = styled.SafeAreaView``;
 
 const App = () => {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView></SafeAreaView>
-    </>
+    <Container>
+      <AuthorRow
+        fullName={'First Last'}
+        linkText={'Comments'}
+        onPressLinkText={() => {
+          console.log('Pressed link!');
+        }}
+      />
+    </Container>
   );
 };
 
