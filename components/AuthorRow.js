@@ -19,15 +19,15 @@ const AuthorName = styled.Text`
   margin: 0 6px;
 `;
 
-const AuthorRow = ({fullName, linkText, onPressLinkText}) => {
+const AuthorRow = ({fullname, linkText, onPressLinkText}) => {
   return (
     <Container>
       <Avatar
-        initials={getInitials(fullName)}
-        backgroundColor={getAvatarColor(fullName)}
+        initials={getInitials(fullname)}
+        backgroundColor={getAvatarColor(fullname)}
         size={35}
       />
-      <AuthorName numberOfLines={1}>{fullName}</AuthorName>
+      <AuthorName numberOfLines={1}>{fullname}</AuthorName>
       {!!linkText && (
         <TouchableOpacity onPress={onPressLinkText}>
           <Text>{linkText}</Text>
