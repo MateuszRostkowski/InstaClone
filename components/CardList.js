@@ -1,28 +1,33 @@
+import {FlatList} from 'react-native';
+import PropTypes from 'prop-types';
 import React from 'react';
+
+import {getImageFromId} from '../utils/api';
 import Card from './Card';
 
-const data = [
-  {
-    id: 0,
-    author: 'Bob Ross',
-  },
-  {
-    id: 1,
-    author: 'Chuck Norris',
-  },
-];
+const keyExtractor = ({id}) => id.toString();
 
-const CardList = () => {
-  return (
+const CardList = ({data}) => {
+  const renderItem = ({item: {id, author}}) => (
     <Card
-      fullname={'First Last'}
-      linkText={'Comments'}
-      onPressLinkText={() => {
-        console.log('Pressed link!');
+      fullname={author}
+      image={{
+        uri: getImageFromId(id),
       }}
-      image={{uri: 'https://unsplash.it/600/600'}}
     />
   );
+  return (
+    <FlatList data={data} renderItem={renderItem} keyExtractor={keyExtractor} />
+  );
+};
+
+CardList.PropTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      author: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 };
 
 export default CardList;
