@@ -41,7 +41,7 @@ const Card = ({fullname, linkText, onPressLinkText, image}) => {
   );
 };
 
-Card.propTypes = {
+Card.PropTypes = {
   fullname: PropTypes.string.isRequired,
   image: Image.propTypes.source.isRequired,
   linkText: PropTypes.string,

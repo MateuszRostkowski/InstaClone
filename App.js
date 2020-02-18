@@ -5,10 +5,21 @@ import CardList from './components/CardList';
 
 const Container = styled.SafeAreaView``;
 
+const data = [
+  {
+    id: 0,
+    author: 'Bob Ross',
+  },
+  {
+    id: 1,
+    author: 'Chuck Norris',
+  },
+];
+
 const App = () => {
   return (
     <Container>
-      <CardList />
+      <CardList data={data} />
     </Container>
   );
 };
