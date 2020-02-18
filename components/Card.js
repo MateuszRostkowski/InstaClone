@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Image, View} from 'react-native';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -9,13 +9,8 @@ const Container = styled.View`
   height: 420px;
 `;
 const Picture = styled.Image`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  /* flex:1; */
+  flex: 1;
+  background-color: rgba(0, 0, 0, 0.05);
 `;
 
 const Indicator = styled.ActivityIndicator`
@@ -27,6 +22,10 @@ const Indicator = styled.ActivityIndicator`
 `;
 
 const Card = ({fullname, linkText, onPressLinkText, image}) => {
+  const [loading, setLoading] = useState(true);
+  const handleLoad = () => {
+    setLoading(false);
+  };
   return (
     <View>
       <AuthorRow
@@ -35,8 +34,8 @@ const Card = ({fullname, linkText, onPressLinkText, image}) => {
         onPressLinkText={onPressLinkText}
       />
       <Container>
-        <Indicator size={'large'} color="red" />
-        <Picture source={image} />
+        {loading && <Indicator size={'large'} color="red" />}
+        <Picture source={image} onLoad={handleLoad} />
       </Container>
     </View>
   );
