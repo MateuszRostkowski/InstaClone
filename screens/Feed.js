@@ -1,9 +1,4 @@
-import {
-  ActivityIndicator,
-  Text,
-  ViewPropTypes,
-  SafeAreaView,
-} from 'react-native';
+import {ActivityIndicator, Text, ViewPropTypes, View} from 'react-native';
 import PropTypes from 'prop-types';
 import React, {useState, useEffect} from 'react';
 import {fetchImages} from '../utils/api';
@@ -32,14 +27,15 @@ const Feed = () => {
   if (loading) {
     return <ActivityIndicator size="large" />;
   }
+
   if (error) {
     return <Text>{error}</Text>;
   }
-  console.log(items);
+
   return (
-    <SafeAreaView>
+    <View>
       <CardList data={items} />
-    </SafeAreaView>
+    </View>
   );
 };
 
