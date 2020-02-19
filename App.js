@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import CardList from './components/CardList';
+import Feed from './screens/Feed';
 
 const Container = styled.SafeAreaView``;
 
@@ -19,7 +19,7 @@ const data = [
 const App = () => {
   return (
     <Container>
-      <CardList data={data} />
+      <Feed data={data} />
     </Container>
   );
 };
