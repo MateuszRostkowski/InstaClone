@@ -1,13 +1,9 @@
 import React, {useState} from 'react';
-import {Image, View} from 'react-native';
+import {Image, View, Dimensions} from 'react-native';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import AuthorRow from './AuthorRow';
 
-const Container = styled.View`
-  width: 420px;
-  height: 420px;
-`;
 const Picture = styled.Image`
   flex: 1;
   background-color: rgba(0, 0, 0, 0.05);
@@ -26,6 +22,7 @@ const Card = ({fullname, linkText, onPressLinkText, image}) => {
   const handleLoad = () => {
     setLoading(false);
   };
+  const {width} = Dimensions.get('window');
   return (
     <View>
       <AuthorRow
@@ -33,10 +30,14 @@ const Card = ({fullname, linkText, onPressLinkText, image}) => {
         linkText={linkText}
         onPressLinkText={onPressLinkText}
       />
-      <Container>
+      <View
+        style={{
+          width: width,
+          height: width,
+        }}>
         {loading && <Indicator size={'large'} color="red" />}
         <Picture source={image} onLoad={handleLoad} />
-      </Container>
+      </View>
     </View>
   );
 };
